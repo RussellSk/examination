@@ -61,6 +61,51 @@
                 <span>Dashboard</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('dashboard') }}">
+                <i class="fas fa-fw fa-poll-h"></i>
+                <span>Результаты</span></a>
+        </li>
+        <hr class="sidebar-divider"/>
+
+        <div class="sidebar-heading">
+            Управление
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('dashboard') }}">
+                <i class="fas fa-fw fa-list-alt"></i>
+                <span>Тесты</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('dashboard') }}">
+                <i class="fas fa-fw fa-address-card"></i>
+                <span>Пользователи</span></a>
+        </li>
+        <hr class="sidebar-divider"/>
+
+        <div class="sidebar-heading">
+            Импорт
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('importUsers') }}">
+                <i class="fas fa-fw fa-address-card"></i>
+                <span>Импорт пользователей</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('importTests') }}">
+                <i class="fas fa-fw fa-list-alt"></i>
+                <span>Импорт тестов</span></a>
+        </li>
+
+        <hr class="sidebar-divider"/>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('importTests') }}">
+                <i class="fas fa-fw fa-users-cog"></i>
+                <span>Администраторы</span></a>
+        </li>
+
     </ul>
     <!-- End of Sidebar -->
 
