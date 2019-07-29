@@ -1,0 +1,39 @@
+.sidebar .nav-item .collapse .collapse-inner .collapse-item, .sidebar .nav-item .collapsing .collapse-inner .collapse-item {
+    padding: .1rem 1rem!important;
+}
+.sidebar .nav-item .nav-link {
+    padding: .5rem 1rem!important;
+}
+input::-webkit-input-placeholder {
+    color: #9fa8da!important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+    color: #9fa8da !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+    color: #9fa8da !important;
+}
+
+input:-ms-input-placeholder {
+    color: #9fa8da !important;
+}
+.form-control {
+    font-weight: 500!important;
+    color: #000;
+}
+.list-group-item-custom {
+    position: relative;
+    display: block;
+    /* padding: .75rem 1.25rem; */
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.form-group {
+    margin-bottom: 0.4rem!important;
+}
+.card-columns {
+    column-count: 4;
+}
