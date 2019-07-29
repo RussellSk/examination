@@ -21,7 +21,7 @@
 
 
 
-    <title>TopInvest - Administration</title>
+    <title>TDIU - Administration</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -59,52 +59,6 @@
             <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="fas fa-fw fa-home"></i>
                 <span>Dashboard</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('baner.index') }}">
-                <i class="fas fa-fw fa-images"></i>
-                <span>Рекламные баннеры</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('news.index') }}">
-                <i class="fas fa-fw fa-newspaper"></i>
-                <span>Публикации</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('category.index') }}">
-                <i class="fas fa-fw fa-sitemap"></i>
-                <span>Категории</span></a>
-        </li>
-        <li class="nav-item">
-                <a class="nav-link" href="{{ route('notification.index') }}">
-                    <i class="fas fa-fw fa-sitemap"></i>
-                    <span>Оповещения</span></a>
-            </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('settings.index') }}">
-                <i class="fas fa-fw fa-tools"></i>
-                <span>Настройки</span></a>
-        </li>
-        <hr class="sidebar-divider">
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
-                <i class="fas fa-fw fa-users-cog"></i>
-                <span>Пользователи</span>
-            </a>
-            <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Пользователи системы:</h6>
-                    <a class="collapse-item" href="{{ route('users.index') }}"> Пользователи</a>
-                    <a class="collapse-item" href="{{ route('users.create') }}"> Создать пользователя</a>
-                    <h6 class="collapse-header">Роли пользователей:</h6>
-                    <a class="collapse-item" href="{{ route('roles.index') }}"> Роли</a>
-                    <a class="collapse-item" href="{{ route('roles.create') }}"> Создать роль</a>
-                    <h6 class="collapse-header">Доступы в систему:</h6>
-                    <a class="collapse-item" href="{{ route('permissions.index') }}"> Доступы</a>
-                    <a class="collapse-item" href="{{ route('permissions.create') }}"> Создать доступ</a>
-                </div>
-            </div>
         </li>
 
     </ul>
@@ -200,10 +154,10 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer class="sticky-footer bg-white shadow">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright Topinvest &copy;  {{ date('Y') }}</span>
+                    <span>Copyright TDIU &copy;  {{ date('Y') }}</span>
                 </div>
             </div>
         </footer>
