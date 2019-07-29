@@ -101,7 +101,7 @@
         <hr class="sidebar-divider"/>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('importTests') }}">
+            <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="fas fa-fw fa-users-cog"></i>
                 <span>Администраторы</span></a>
         </li>
