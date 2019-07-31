@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ExamController@index');
 
 Auth::routes();
 
@@ -23,3 +21,6 @@ Route::resource('users', 'UserController');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/import/users', 'StudentsController@index')->name('importUsers');
 Route::get('/import/tests', 'TestsController@index')->name('importTests');
+
+Route::get('/exam/info', 'ExamController@info');
+Route::get('/exam/login', 'ExamController@login');
