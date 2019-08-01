@@ -24,7 +24,7 @@
 
         <div class="card mt-5">
             <div class="card-body">
-                <h5 class="card-title">Вопрос: </h5>
+                <h4 class="card-title">Вопрос № @{{ currentQuestionIndex+1 }}</h4>
                 <p class="card-text">@{{ currentQuestion.question }}</p>
             </div>
         </div>

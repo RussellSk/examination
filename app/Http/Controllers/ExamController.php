@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Test;
 use Illuminate\Http\Request;
+use Exception;
 
 class ExamController extends Controller
 {
@@ -58,8 +59,24 @@ class ExamController extends Controller
         return response()->json($data);
     }
 
-    public function finishExam()
+    public function finishExam(Request $request)
     {
+        $data = [];
+        try {
+            $data = json_decode($request->getContent(), true);
+            if ($data == null)
+                throw new Exception("The given data must be a valid.");
+        } catch (Exception $ex) {
+            return response()->json([
+                'message' => 'The given data was invalid.',
+                'errors' => [
+                    $ex->getMessage(),
+                ]
+            ], 422);
+        }
 
+        foreach ($data as $question) {
+
+        }
     }
 }
