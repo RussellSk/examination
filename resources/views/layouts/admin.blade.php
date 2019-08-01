@@ -72,12 +72,12 @@
             Управление
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link" href="{{ route('tests.index') }}">
                 <i class="fas fa-fw fa-list-alt"></i>
                 <span>Тесты</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link" href="{{ route('importUsers') }}">
                 <i class="fas fa-fw fa-address-card"></i>
                 <span>Пользователи</span></a>
         </li>
@@ -87,23 +87,31 @@
             Импорт
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('importUsers') }}">
+            <a class="nav-link" href="{{ route('importUsersShowUpload') }}">
                 <i class="fas fa-fw fa-address-card"></i>
                 <span>Импорт пользователей</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('importTests') }}">
+            <a class="nav-link" href="{{ route('tests.import') }}">
                 <i class="fas fa-fw fa-list-alt"></i>
                 <span>Импорт тестов</span></a>
         </li>
 
         <hr class="sidebar-divider"/>
 
+        <div class="sidebar-heading">
+            Настройки
+        </div>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="fas fa-fw fa-users-cog"></i>
                 <span>Администраторы</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('language.index') }}">
+                <i class="fas fa-fw fa-language"></i>
+                <span>Языки</span></a>
         </li>
 
     </ul>
