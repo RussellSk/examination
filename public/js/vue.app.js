@@ -7,7 +7,7 @@ let app = new Vue({
         questionActive: true,
         givenAnswers: [],
         answerSelected: "",
-        endDate: Date.parse('2019-08-01 00:02:00'),
+        endDate: Date.parse('2019-08-01 22:18:00'),
         hours: null,
         minutes: null,
         seconds: null,
@@ -20,55 +20,7 @@ let app = new Vue({
             answers: [],
         },
 
-        questionsData: [
-            {
-                question: "Question 1",
-                userAnswer: '',
-                answers: [
-                    'Answer A is here 1',
-                    'Answer B is here 1',
-                    'Answer C is here 1',
-                    'Answer D is here 1',
-                ]
-            },
-            {
-                question: "Question 2",
-                userAnswer: '',
-                answers: [
-                    'Answer A is here 2 Components are reusable Vue instances with a name: in this case, <button-counter>. We can use this component as a custom element inside a root Vue instance created with new Vue:',
-                    'Answer B is here 2',
-                    'Answer C is here 2',
-                    'Answer D is here 1',
-                ]
-            },
-            {
-                question: "Question 3",
-                userAnswer: '',
-                answers: [
-                    'Answer A is here 3',
-                    'Answer B is here 3',
-                    'Answer C is here 3',
-                ]
-            },
-            {
-                question: "Question 4",
-                userAnswer: '',
-                answers: [
-                    'Answer A is here 3',
-                    'Answer B is here 3',
-                    'Answer C is here 3',
-                ]
-            },
-            {
-                question: "Question 5",
-                userAnswer: '',
-                answers: [
-                    'Answer A is here 3',
-                    'Answer B is here 3',
-                    'Answer C is here 3',
-                ]
-            },
-        ],
+        questionsData: [],
     },
 
     methods: {
@@ -110,14 +62,14 @@ let app = new Vue({
             console.log(this.questionsData)
         },
 
-        updateRemaining (distance) {
+        updateRemaining: function(distance) {
             this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
             this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             this.seconds = Math.floor((distance % (1000 * 60)) / 1000)
         },
 
-        tick () {
+        tick: function() {
             const currentTime = new Date();
             const distance = Math.max(this.endDate - currentTime, 0);
             this.updateRemaining(distance);
@@ -125,17 +77,33 @@ let app = new Vue({
             if (distance === 0) {
                 clearInterval(this.timer);
                 this.isEnded = true;
-                console.log("TIMER ENDED")
+                console.log("TIMER ENDED");
+                this.finishExam();
             }
-        }
+        },
+
+        finishExam: function () {
+            axios
+                .post('/exam/json/finish', this.questionsData)
+                .then(function (response) {
+                    console.log('FINISH');
+                    //window.location.href = "/exam/result";
+                });
+        },
 
     },
 
     mounted: function() {
-        this.currentQuestion = this.questionsData[0];
-        this.tick();
-        this.timer = setInterval(this.tick.bind(this), 1000)
-
+        let self = this;
+        axios
+            .get('/exam/json/questions')
+            .then(function (response) {
+                console.log(response);
+                self.questionsData = response.data;
+                self.currentQuestion = self.questionsData[0];
+                self.tick();
+                self.timer = setInterval(self.tick.bind(self), 1000)
+            });
     },
 
     filters: {

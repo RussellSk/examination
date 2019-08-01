@@ -8,6 +8,9 @@
     </div>
 
     <a href="{{ route('importUsersShowUpload') }}" class="btn btn-success mb-3">Импортировать XLS</a>
+    <a href="{{ route('student.generate') }}" class="btn btn-primary mb-3">Сгенерировать логин и пароль</a>
+    <a href="#" class="btn btn-outline-primary mb-3 ml-2" onclick="return printPage()">Распечатать доступы</a>
+    <div id="printerDiv" style="display:none"></div>
 
     <!-- Content Row -->
     <div class="row">
@@ -24,7 +27,7 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>Имя</th>
-                                <th>Код</th>
+                                <th>Шифр</th>
                                 <th>Логин</th>
                                 <th>Пароль</th>
                                 <th>Прошел</th>
@@ -40,7 +43,7 @@
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->code }}</td>
                                     <td>{{ $student->enter_code }}</td>
-                                    <td>{{ $student->enter_code }}</td>
+                                    <td>{{ $student->enter_password }}</td>
                                     <td>
                                         @if($student->attended)
                                             <span class="badge badge-success">Да</span>
@@ -74,4 +77,15 @@
     </div>
 
 
+@endsection
+
+@section('app-script')
+    <script>
+        function printPage()
+        {
+            var div = document.getElementById("printerDiv");
+            div.innerHTML = '<iframe src="{{ route('student.print') }}" onload="this.contentWindow.print();"></iframe>';
+            return false;
+        }
+    </script>
 @endsection

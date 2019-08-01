@@ -16,35 +16,60 @@
                     <h6 class="m-0 font-weight-bold text-primary">Редактирование теста: {{ $test->question }}</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('student.update', $student->id) }}" method="post">
+                    <form action="{{ route('tests.update', $test->id) }}" method="post">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">Имя</label>
+                            <label for="language" class="col-sm-2 col-form-label">Язык</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $student->name }}">
+                                <select class="form-control" name="language" id="language">
+                                    @foreach($languages as $language)
+                                        <option value="{{ $language->id }}" {{ $language->id == $test->language_id ? 'SELECTED' : '' }}>{{ $language->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="code" class="col-sm-2 col-form-label">Шифр</label>
+                            <label for="question" class="col-sm-2 col-form-label">Вопрос</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="code" id="code" value="{{ $student->code }}">
+                                <input type="text" class="form-control" name="question" id="question" value="{{ $test->question }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="enter_code" class="col-sm-2 col-form-label">Логин входа</label>
+                            <label for="option_a" class="col-sm-2 col-form-label">Вариант А</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="enter_code" id="enter_code" value="{{ $student->enter_code }}">
+                                <textarea class="form-control" name="option_a" id="option_a">{{ $test->option_a }}</textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="enter_password" class="col-sm-2 col-form-label">Пароль входа</label>
+                            <label for="option_b" class="col-sm-2 col-form-label">Вариант B</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="enter_password" id="enter_password" value="{{ $student->enter_password }}">
+                                <textarea class="form-control" name="option_b" id="option_b">{{ $test->option_b }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="option_c" class="col-sm-2 col-form-label">Вариант C</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="option_c" id="option_c">{{ $test->option_c }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="option_d" class="col-sm-2 col-form-label">Вариант D</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="option_d" id="option_d">{{ $test->option_d }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="answer" class="col-sm-2 col-form-label">Ответ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="answer" id="answer" value="{{ $test->answer }}">
                             </div>
                         </div>
 

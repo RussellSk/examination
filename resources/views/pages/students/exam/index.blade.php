@@ -50,7 +50,7 @@
             <div class="card-body p-3">
                 <div class="card-text">
                     <button class="btn btn-warning btn-lg" v-on:click="prevQuestion" v-bind:disabled="currentQuestionIndex === 0">Назад</button>
-                    <button class="btn btn-danger btn-lg float-right ml-4">Завершить</button>
+                    <button class="btn btn-danger btn-lg float-right ml-4" v-on:click="finishExam()">Завершить</button>
                     <button class="btn btn-success btn-lg float-right" v-on:click="nextQuestion" v-bind:disabled="currentQuestionIndex === this.questionsData.length-1">Далее</button>
                 </div>
             </div>

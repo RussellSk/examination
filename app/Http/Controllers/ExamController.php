@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Test;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -31,5 +32,34 @@ class ExamController extends Controller
     public function login()
     {
         return view('pages.students.exam.login');
+    }
+
+    /**
+     * Возвращает данные вопросов тестирования
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function questionDataJSON()
+    {
+        $data = [];
+        $questions = Test::where('language_id', 3)->get();
+        foreach ($questions as $question) {
+            $data []= [
+                'question' => $question->question,
+                'userAnswer' => '',
+                'answers' => [
+                    $question->option_a,
+                    $question->option_b,
+                    $question->option_c,
+                    $question->option_d,
+                ]
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function finishExam()
+    {
+
     }
 }

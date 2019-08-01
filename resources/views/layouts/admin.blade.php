@@ -79,7 +79,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('importUsers') }}">
                 <i class="fas fa-fw fa-address-card"></i>
-                <span>Пользователи</span></a>
+                <span>Студенты</span></a>
         </li>
         <hr class="sidebar-divider"/>
 
@@ -89,7 +89,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('importUsersShowUpload') }}">
                 <i class="fas fa-fw fa-address-card"></i>
-                <span>Импорт пользователей</span></a>
+                <span>Импорт студентов</span></a>
         </li>
 
         <li class="nav-item">

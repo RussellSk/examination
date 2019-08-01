@@ -34,9 +34,13 @@ Route::post('/import/users/upload', 'StudentsController@uploadFile')->name('impo
 Route::delete('/student/{id}', 'StudentsController@delete')->where(['id' => '[0-9]+'])->name('student.delete');
 Route::get('/student/{id}', 'StudentsController@edit')->where(['id' => '[0-9]+'])->name('student.edit');
 Route::put('/student/{id}', 'StudentsController@update')->where(['id' => '[0-9]+'])->name('student.update');
+Route::get('/student/generate/access', 'StudentsController@generateAccess')->name('student.generate');
+Route::get('/student/print/access', 'StudentsController@printAccess')->name('student.print');
 
 Route::get('/exam/info', 'ExamController@info');
 Route::get('/exam/login', 'ExamController@login');
+Route::get('/exam/json/questions', 'ExamController@questionDataJSON');
+Route::post('/exam/json/finish', 'ExamController@finishExam');
 
 Route::get('/settings/language', 'LanguageController@index')->name('language.index');
 Route::post('/settings/language', 'LanguageController@store')->name('language.create');

@@ -123,4 +123,33 @@ class StudentsController extends Controller
 
         return redirect()->back()->with('flash_error', 'Студент успешно удален');
     }
+
+    /**
+     * Генерация доступов для студентов
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function generateAccess()
+    {
+        $students = Student::all();
+        foreach ($students as $student) {
+            $fillerEnterCode = hexdec(uniqid($student->id));
+            $fillerPassword = uniqid($student->id);
+            $idCount = strlen((string)$student->id);
+            $student->enter_code = substr($fillerEnterCode, 0, 7 - $idCount).(string)$student->id;
+            $student->enter_password = substr($fillerPassword, 0, 7 - $idCount).(string)$student->id;;
+            $student->save();
+        }
+
+        return redirect()->back()->with('flash_success', 'Доступы успешно сгенерированны');
+    }
+
+    /**
+     * Распечатать доступы для студентов
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function printAccess()
+    {
+        return view('pages.users.print', ['students' => Student::all()]);
+    }
+
 }

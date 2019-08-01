@@ -39,7 +39,7 @@
                                     <td>{{ $test->language->name ?? '' }}</td>
                                     <td>{{ $test->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
-                                        <a href="" class="btn btn-info btn-sm float-left mr-1">Edit</a>
+                                        <a href="{{ route('tests.edit', $test->id) }}" class="btn btn-info btn-sm float-left mr-1">Edit</a>
                                         <form action="{{ route('tests.delete', $test->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
