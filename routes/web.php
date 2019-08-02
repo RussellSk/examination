@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', 'ExamController@index');
 
 Auth::routes();
 
@@ -37,10 +36,13 @@ Route::put('/student/{id}', 'StudentsController@update')->where(['id' => '[0-9]+
 Route::get('/student/generate/access', 'StudentsController@generateAccess')->name('student.generate');
 Route::get('/student/print/access', 'StudentsController@printAccess')->name('student.print');
 
-Route::get('/exam/info', 'ExamController@info');
-Route::get('/exam/login', 'ExamController@login');
+Route::get('/exam', 'ExamController@index')->name('exam.tests');
+Route::get('/', 'ExamController@login')->name('exam.main');
+Route::get('/exam/info', 'ExamController@info')->name('exam.info');
+Route::post('/exam/login', 'ExamController@handleLogin')->name('exam.login');
 Route::get('/exam/json/questions', 'ExamController@questionDataJSON');
 Route::post('/exam/json/finish', 'ExamController@finishExam');
+Route::get('/exam/results', 'ExamController@resultPage');
 
 Route::get('/settings/language', 'LanguageController@index')->name('language.index');
 Route::post('/settings/language', 'LanguageController@store')->name('language.create');

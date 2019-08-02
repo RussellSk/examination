@@ -3,11 +3,13 @@ let app = new Vue({
     el: '#app',
 
     data: {
+        props: ['finishTime'],
         currentQuestionIndex: 0,
         questionActive: true,
         givenAnswers: [],
         answerSelected: "",
-        endDate: Date.parse('2019-08-01 22:18:00'),
+        endDate: Date.parse({{ $endTime}}),
+        csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         hours: null,
         minutes: null,
         seconds: null,
@@ -59,7 +61,6 @@ let app = new Vue({
 
         selectAnswer: function(answer) {
             this.questionsData[this.currentQuestionIndex].userAnswer = answer;
-            console.log(this.questionsData)
         },
 
         updateRemaining: function(distance) {
@@ -83,8 +84,14 @@ let app = new Vue({
         },
 
         finishExam: function () {
+            let self = this;
             axios
-                .post('/exam/json/finish', this.questionsData)
+                .post('/exam/json/finish', this.questionsData, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': self.csrf,
+                    }
+                })
                 .then(function (response) {
                     console.log('FINISH');
                     //window.location.href = "/exam/result";
@@ -99,7 +106,7 @@ let app = new Vue({
             .get('/exam/json/questions')
             .then(function (response) {
                 console.log(response);
-                self.questionsData = response.data;
+                self.questionsData = _.shuffle(response.data);
                 self.currentQuestion = self.questionsData[0];
                 self.tick();
                 self.timer = setInterval(self.tick.bind(self), 1000)

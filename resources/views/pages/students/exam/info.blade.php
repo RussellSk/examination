@@ -1,7 +1,7 @@
 @extends('layouts.exam')
 @section('content')
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">Exam 1.0</a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="#">TDIU Exam</a>
     </nav>
 
     <main role="main" class="container pb-5">
@@ -20,7 +20,7 @@
             ЧТО БЫ НАЧАТЬ ТЕСТ НАЖМИТЕ НА КНОПКУ <strong class="text-success">START</strong>.
         </div>
         <div class="text-center">
-            <a href="#" class="btn btn-success btn-lg shadow font-weight-bold" style="width: 150px">START</a>
+            <a href="{{ route('exam.tests') }}" class="btn btn-success btn-lg shadow font-weight-bold" style="width: 150px">START</a>
         </div>
     </main>
 @endsection

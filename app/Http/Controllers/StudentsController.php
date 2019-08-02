@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Language;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Exception;
@@ -11,6 +12,11 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 class StudentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     /**
      * Отображение главной страницы импорта юзеров
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -60,6 +66,7 @@ class StudentsController extends Controller
                     $student = new Student();
                     $student->name = $sheet->getCell('A'.$i)->getValue();
                     $student->code = $sheet->getCell('B'.$i)->getValue();
+                    $student->language_id = (int)$sheet->getCell('C'.$i)->getValue();
                     $student->save();
                 }
 
@@ -82,7 +89,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.users.edit', ['student' => Student::findOrFail($id)]);
+        return view('pages.users.edit', ['student' => Student::findOrFail($id), 'languages' => Language::all()]);
     }
 
     /**
@@ -99,6 +106,7 @@ class StudentsController extends Controller
             $student->code = $request->input('code');
             $student->enter_code = $request->input('enter_code');
             $student->enter_password = $request->input('enter_password');
+            $student->language_id = (int)$request->input('language');
             $student->save();
         } catch (Exception $ex) {
             return redirect()->back()->with('flash_error', 'Ошибка сохранения данныех: '.$ex->getMessage());

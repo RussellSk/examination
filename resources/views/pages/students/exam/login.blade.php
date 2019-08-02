@@ -1,7 +1,7 @@
 @extends('layouts.exam')
 @section('content')
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">Exam 1.0</a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="#">TDIU Exam</a>
     </nav>
 
     <main role="main" class="container pb-5">
@@ -21,14 +21,14 @@
                     <div class="card rounded shadow-sm">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('login') }}">
+                            <form action="{{ route('exam.login') }}" method="post">
                                 @csrf
 
                                 <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">Логин</label>
+                                    <label for="login" class="col-md-4 col-form-label text-md-right">Логин</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control is-invalid " name="email" required autocomplete="email" autofocus>
+                                        <input id="login" type="text" class="form-control" name="login" required  autofocus>
                                     </div>
                                 </div>
 
@@ -36,7 +36,7 @@
                                     <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control is-invalid " name="password" required autocomplete="current-password">
+                                        <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
                                     </div>
                                 </div>
 

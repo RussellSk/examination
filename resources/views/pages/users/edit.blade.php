@@ -21,6 +21,17 @@
                         @method('PUT')
 
                         <div class="form-group row">
+                            <label for="language" class="col-sm-2 col-form-label">Язык</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="language" id="language">
+                                    @foreach($languages as $language)
+                                        <option value="{{ $language->id }}" {{ $language->id == $student->language_id ? 'SELECTED' : '' }}>{{ $language->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Имя</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="name" id="name" value="{{ $student->name }}">

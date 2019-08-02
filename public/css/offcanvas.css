@@ -5,6 +5,11 @@ body {
 
 body {
   padding-top: 56px;
+  background: url("/images/background.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 @media (max-width: 991.98px) {

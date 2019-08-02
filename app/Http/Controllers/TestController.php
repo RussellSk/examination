@@ -12,6 +12,11 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 class TestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     /**
      * Список добавленных тестов
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

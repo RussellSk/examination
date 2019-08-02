@@ -27,12 +27,12 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>Имя</th>
-                                <th>Шифр</th>
                                 <th>Логин</th>
                                 <th>Пароль</th>
                                 <th>Прошел</th>
+                                <th>Язык</th>
                                 <th>Дата/Время добавления</th>
-                                <th>Опции</th>
+                                <th style="min-width: 100px;">Опции</th>
                             </tr>
                             </thead>
 
@@ -40,8 +40,10 @@
                             @foreach ($students as $student)
                                 <tr>
 
-                                    <td>{{ $student->name }}</td>
-                                    <td>{{ $student->code }}</td>
+                                    <td>
+                                        {{ $student->name }}
+                                        ({{ $student->code }})
+                                    </td>
                                     <td>{{ $student->enter_code }}</td>
                                     <td>{{ $student->enter_password }}</td>
                                     <td>
@@ -51,6 +53,7 @@
                                             <span class="badge badge-primary">Нет</span>
                                         @endif
                                     </td>
+                                    <td>{{ $student->language->name ?? '' }}</td>
                                     <td>{{ $student->created_at->format('F d, Y h:ia') }}</td>
                                     <td>
                                         <a href="{{ route('student.edit', $student->id) }}" class="btn btn-info btn-sm float-left mr-1">Edit</a>

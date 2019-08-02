@@ -8,6 +8,11 @@ use Exception;
 
 class LanguageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     public function index()
     {
         return view('pages.language.index', ['languages' => Language::orderBy('id', 'DESC')->get()]);
