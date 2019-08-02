@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ResultAnswer;
 use App\Models\Results;
 use App\Models\Student;
 use App\Models\Test;
@@ -82,8 +83,13 @@ class ExamController extends Controller
         }
 
         $student = Student::where('enter_code', $request->input('login'))->where('enter_password', $request->input('password'))->first();
+
         if ($student == null) {
             return redirect()->back()->with('flash_error', 'Вы ввели неверный логин или пароль');
+        }
+
+        if ($student->attended) {
+            return redirect()->back()->with('flash_error', 'Вы уже сдали экзамен');
         }
 
         Session::put('student', [
@@ -186,6 +192,12 @@ class ExamController extends Controller
         foreach ($data as $item) {
             if (($test = Test::find(Arr::get($item, 'id'))) !== null) {
                 if (!empty(Arr::get($item, 'userAnswer'))) {
+                    $resultAnswer = new ResultAnswer();
+                    $resultAnswer->result_id = $result->id;
+                    $resultAnswer->user_id = $user_id;
+                    $resultAnswer->question_id = $test->id;
+                    $resultAnswer->answer_given = Arr::get($item, 'userAnswer');
+                    $resultAnswer->save();
                     $totalGivenAnswers++;
                     if ($test->	answer == Arr::get($item, 'userAnswer')) {
                         $totalCorrectAnswers++;
