@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\News;
+use App\Models\Student;
+use App\Models\Test;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -18,8 +20,9 @@ class DashboardController extends Controller
     {
 
         return view('pages.dashboard.index', [
-            'totalClients' => 1,
             'totalUsers' => User::count(),
+            'totalStudents' => Student::count(),
+            'totalTests' => Test::count(),
         ]);
     }
 

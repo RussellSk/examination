@@ -11,8 +11,8 @@
             </h3>
 
             <br /><br />
-            <h2 class="text-primary font-weight-bold">INGLIZ TILIDAN TEST SINOVLARI</h2>
-            <h2 class="text-primary font-weight-bold">ТЕСТЫ ПО АНГЛИЙСКОМУ ЯЗЫКУ</h2>
+            <h2 class="text-primary font-weight-bold">CHET TILIDAN TEST SINOVLARI</h2>
+            <h2 class="text-primary font-weight-bold">ТЕСТЫ ПО ИНОСТРАННОМУ ЯЗЫКУ</h2>
         </div>
 
         <div class="container">

@@ -16,19 +16,19 @@
 
         <table class="table table-bordered table-hover bg-white rounded shadow-sm font-weight-bold" style="font-size: 20px!important;">
             <tr>
-                <td>Всего вопросов</td>
+                <td>Jami savollar / Всего вопросов</td>
                 <td>{{ $results['total_answers'] }}</td>
             </tr>
             <tr>
-                <td>Вы ответили</td>
+                <td>Belgilangan javoblar / Вы ответили</td>
                 <td>{{ $results['total_given_answers'] }}</td>
             </tr>
             <tr>
-                <td>Правильных ответов</td>
+                <td>To'g'ri javoblar / Правильных ответов</td>
                 <td>{{ $results['right_answers'] }}</td>
             </tr>
             <tr>
-                <td>Неправильных ответов</td>
+                <td>Noto'g'ri javoblar / Неправильных ответов</td>
                 <td>{{ $results['wrong_answers'] }}</td>
             </tr>
         </table>

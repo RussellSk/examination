@@ -62,7 +62,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link" href="{{ route('result.index') }}">
                 <i class="fas fa-fw fa-poll-h"></i>
                 <span>Результаты</span></a>
         </li>

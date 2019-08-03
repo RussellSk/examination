@@ -47,3 +47,9 @@ Route::get('/exam/results', 'ExamController@resultPage');
 Route::get('/settings/language', 'LanguageController@index')->name('language.index');
 Route::post('/settings/language', 'LanguageController@store')->name('language.create');
 Route::delete('/settings/language/{id}', 'LanguageController@delete')->where(['id' => '[0-9]+'])->name('language.delete');
+
+Route::get('/results', 'ResultController@index')->name('result.index');
+Route::get('/results/{id}', 'ResultController@view')->where(['id' => '[0-9]+'])->name('result.show');
+Route::get('/results/export', 'ResultController@exportXLS')->name('result.export');
+Route::get('/result/edit/{id}', 'ResultController@edit')->where(['id' => '[0-9]+'])->name('result.edit');
+Route::put('/result/{id}', 'ResultController@store')->where(['id' => '[0-9]+'])->name('result.update');

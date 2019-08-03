@@ -208,7 +208,6 @@ class ExamController extends Controller
             }
         }
 
-        $result = new Results();
         $result->student_id = $user_id;
         $result->total_answers = 50;
         $result->total_given_answers = $totalGivenAnswers;

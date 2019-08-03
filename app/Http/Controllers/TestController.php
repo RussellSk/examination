@@ -68,7 +68,7 @@ class TestController extends Controller
                     $test->option_b = $sheet->getCell('C'.$i)->getValue();
                     $test->option_c = $sheet->getCell('D'.$i)->getValue();
                     $test->option_d = $sheet->getCell('E'.$i)->getValue();
-                    $test->	answer = $sheet->getCell('F'.$i)->getValue();
+                    $test->	answer = trim($sheet->getCell('F'.$i)->getValue());
                     $test->language_id = $request->input('language');
                     $test->save();
                 }
@@ -110,7 +110,7 @@ class TestController extends Controller
             $test->option_b = $request->input('option_b');
             $test->option_c = $request->input('option_c');
             $test->option_d = $request->input('option_d');
-            $test->	answer = $request->input('answer');
+            $test->	answer = trim($request->input('answer'));
             $test->language_id = $request->input('language');
             $test->save();
 
