@@ -176,7 +176,6 @@
                 axios
                     .get('/exam/json/questions')
                     .then(function (response) {
-                        console.log(response);
                         self.questionsData = _.shuffle(response.data);
                         self.currentQuestion = self.questionsData[0];
                         self.tick();
