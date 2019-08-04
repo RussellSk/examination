@@ -53,3 +53,7 @@ Route::get('/results/{id}', 'ResultController@view')->where(['id' => '[0-9]+'])-
 Route::get('/results/export', 'ResultController@exportXLS')->name('result.export');
 Route::get('/result/edit/{id}', 'ResultController@edit')->where(['id' => '[0-9]+'])->name('result.edit');
 Route::put('/result/{id}', 'ResultController@store')->where(['id' => '[0-9]+'])->name('result.update');
+
+Route::get('/corrects', 'CorrectController@index')->name('correct.index');
+Route::get('/correct/import', 'CorrectController@import')->name('correct.import');
+Route::post('/correct/import', 'CorrectController@handleImport')->name('correct.store');

@@ -79,6 +79,7 @@
         </div>
     </div>
 
+    <a href="{{ route('correct.index') }}">...</a>
 
 @endsection
 

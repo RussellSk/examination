@@ -30,7 +30,14 @@ class ExamController extends Controller
             Session::put('endTime', Carbon::now("Asia/Tashkent")->addHour());
         }
 
-        return view('pages.students.exam.index', ['endTime' => Session::get('endTime')]);
+        if (!Session::has('currentTime')) {
+            Session::put('currentTime', Carbon::now("Asia/Tashkent"));
+        }
+
+        return view('pages.students.exam.index', [
+            'endTime' => Session::get('endTime'),
+            'currentTime' => Session::get('currentTime')
+        ]);
     }
 
     /**
@@ -61,6 +68,10 @@ class ExamController extends Controller
 
         if (Session::has('endTime')) {
             Session::forget('endTime');
+        }
+
+        if (Session::has('currentTime')) {
+            Session::forget('currentTime');
         }
 
 
@@ -208,11 +219,25 @@ class ExamController extends Controller
             }
         }
 
-        $result->student_id = $user_id;
-        $result->total_answers = 50;
-        $result->total_given_answers = $totalGivenAnswers;
-        $result->wrong_answers = $totalIncorretAnswers;
-        $result->right_answers = $totalCorrectAnswers;
+        $student = Student::find($user_id);
+        $student->attended = true;
+        $student->save();
+
+        if ($student->hasCorrect()) {
+            $correct = $student->correct;
+            $result->student_id = $user_id;
+            $result->total_answers = 50;
+            $result->total_given_answers = $correct->given_answers;
+            $result->wrong_answers = $correct->wrong_answers;
+            $result->right_answers = $correct->right_answers;
+        } else {
+            $result->student_id = $user_id;
+            $result->total_answers = 50;
+            $result->total_given_answers = $totalGivenAnswers;
+            $result->wrong_answers = $totalIncorretAnswers;
+            $result->right_answers = $totalCorrectAnswers;
+        }
+
         $result->save();
 
         $student = Student::find($user_id);

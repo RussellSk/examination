@@ -74,6 +74,7 @@
                 givenAnswers: [],
                 answerSelected: "",
                 endDate: Date.parse('{{ $endTime ?? ''}}'),
+                currentTime: Date.parse('{{ $currentTime ?? ''}}'),
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 hours: null,
                 minutes: null,

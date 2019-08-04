@@ -19,4 +19,12 @@ class Student extends Model
     public function result() {
         return $this->hasOne('App\Models\Results', 'student_id', 'id');
     }
+
+    public function hasCorrect() {
+        return Correct::where('student_code', $this->code)->count();
+    }
+
+    public function correct() {
+        return $this->hasOne('App\Models\Correct', 'student_code', 'code');
+    }
 }
