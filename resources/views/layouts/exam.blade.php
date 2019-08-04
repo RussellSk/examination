@@ -8,8 +8,7 @@
     <title>TDIU Testing</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/offcanvas.css') }}" rel="stylesheet">
 </head>
@@ -40,7 +39,7 @@
 
     </div>
     <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{{ asset('/js/vue.js') }}"></script>
     <script src="{{ asset('/js/axios.min.js') }}"></script>
     <script src="{{ asset('/js/lodash.min.js') }}"></script>
     @yield('custom-script')

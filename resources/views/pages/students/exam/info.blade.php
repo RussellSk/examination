@@ -1,7 +1,12 @@
 @extends('layouts.exam')
 @section('content')
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">TDIU Exam</a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="#">
+            @if (session()->has('student'))
+                @php($student = session()->get('student'))
+                Abiturient: <span class="text-warning"> {{ $student['name'] }}</span>
+            @endif
+        </a>
     </nav>
 
     <main role="main" class="container pb-5">

@@ -2,7 +2,12 @@
 @section('content')
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">TDIU Exam</a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="#">
+            @if (session()->has('student'))
+                @php($student = session()->get('student'))
+                Abiturient: <span class="text-warning"> {{ $student['name'] }}</span>
+            @endif
+        </a>
         <div class="ml-auto font-weight-bold" style="color: #8bc34a">
             <h3>@{{ hours | twoDigits }} : @{{ minutes | twoDigits }} : @{{ seconds | twoDigits}}</h3>
         </div>
